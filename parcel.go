@@ -40,6 +40,7 @@ func (s ParcelStore) GetByClient(client int) ([]Parcel, error) {
 	if err != nil {
 		return []Parcel{}, err
 	}
+	defer rows.Close()
 	var res []Parcel
 	for rows.Next() {
 		p := Parcel{}
